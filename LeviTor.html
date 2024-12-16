@@ -1,0 +1,838 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<div class="column has-text-centered">
+
+</div>
+<title>LeviTor: 3D Trajectory Oriented Image-to-Video Synthesis</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet">
+<link rel="stylesheet" href="./static/css/bulma.min.css">
+<link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+<link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+<link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<link rel="stylesheet" href="./static/css/index.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="./static/js/fontawesome.all.min.js"></script>
+<script src="./static/js/bulma-carousel.min.js"></script>
+<script src="./static/js/bulma-slider.min.js"></script>
+</head>
+
+<body>
+	<button style="position: fixed;right: 15px;top:  50%;height: 100px;width: 140px; font-size: 20px;" type="button"><a href="#top">Back to top</a></button> 
+<div class="page-container">
+  
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">LeviTor: 3D Trajectory Oriented Image-to-Video Synthesis</h1>
+            <div class="column is-full_width">
+            </div>
+            <!-- <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a>CVPR 2025 Anonymous Submition (Paper ID: 8340)</a>
+              </span>
+            </div> -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a>Anonymous Authors</a>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Anonymous Institutions</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+
+                <span class="link-block">
+                  <a href="#our_results_container"
+                     class="external-link button is-normal is-rounded">
+                    <span>Showcases</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="#comparison_with_baseline_container"
+                     class="external-link button is-normal is-rounded">
+                    <span>Comparisons</span>
+                  </a>
+                </span>          
+                
+                <span class="link-block">
+                  <a href="#ablations"
+                     class="external-link button is-normal is-rounded">
+                    <span>Ablations</span>
+                  </a>
+                </span>
+              
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <!-- <p align="center">&nbsp;</p> -->
+	<a href="#top"></a>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                The intuitive nature of drag-based interaction has led to its growing adoption for controlling object trajectories in image-to-video synthesis. Still, existing methods that perform dragging in the 2D space usually face ambiguity when handling out-of-plane movements. In this work, we augment the interaction with a new dimension, i.e., the depth dimension, such that users are allowed to assign a relative depth for each point on the trajectory. That way, our new interaction paradigm not only inherits the convenience from 2D dragging, but facilitates trajectory control in the 3D space, broadening the scope of creativity. We propose a pioneering method for 3D trajectory control in image-to-video synthesis by abstracting object masks into a few cluster points. These points, accompanied by the depth information and the instance information, are finally fed into a video diffusion model as the control signal. Extensive experiments validate the effectiveness of our approach, dubbed LeviTor, in precisely manipulating the object movements when producing photo-realistic videos from static images. <br><br> <strong>Note: Please refresh the webpage if the GIFs appear to be out of sync.</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!------------------ BEGIN SECTION ------------------>
+  <p>&nbsp;</p>
+  <hr>
+  <h2 style="margin-top: 0em;" id="our_results_container" align="left"><a name="image-results" id="image-results"></a>Showcases</h2>
+
+  <style>
+    .image-container {
+        text-align: center;
+    }
+    .center-image {
+        max-width: 100%;
+        height: auto;
+    }
+  </style>
+
+  <div class="image-container">
+    <img src="bar.png" alt="" width="800" class="center-image">
+  </div>
+
+
+  <p style="font-size: 20px" align="center">
+    <b> 
+    Controlled Occlusion Generation with The Same User-Interative Trajectory
+    </b>
+  </p>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Start Image & <br>User Input</th>
+        <th style="font-size: 16px">Generation Results</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br>User Input</th>
+        <th style="font-size: 16px">Generation Results</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br>User Input</th>
+        <th style="font-size: 16px">Generation Results</th>
+      </tr>
+
+      <tr>
+        <th><img src="./pictures/ballon_building_near.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/ballon_building_near.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./pictures/storm_near.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/storm_near.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./pictures/bell_1.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/bell_1.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr>
+        <th style="font-size: 16px">Start Image & <br>User Input</th>
+        <th style="font-size: 16px">Generation Results</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br>User Input</th>
+        <th style="font-size: 16px">Generation Results</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br>User Input</th>
+        <th style="font-size: 16px">Generation Results</th>
+      </tr>
+      
+      <tr>
+        <th><img src="./pictures/ballon_building_far.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/ballon_building_far.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./pictures/storm_far.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/storm_far.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./pictures/bell_2.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/bell_2.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <div class="content has-text-justified">
+              <p>
+                In the example of bell swinging, the 2D trajectory shows the bell swinging to the right first and then to the left. By assigning different depth values, two distinct swinging trajectories are achieved. The top bell first leans to the back-right and then to the front-left, while the bottom bell first leans to the front-right and then to the back-left.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p style="font-size: 20px" align="center">
+    <b> 
+      Better Control for Forward and Backward Object Movements in relation to the Lens
+    </b>
+  </p>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Start Image & <br>User Input</th>
+        <th style="font-size: 16px">Generation Results</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br>User Input</th>
+        <th style="font-size: 16px">Generation Results</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br>User Input</th>
+        <th style="font-size: 16px">Generation Results</th>
+      </tr>
+
+      <tr>
+        <th><img src="./pictures/two_planets.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/two_planets.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./pictures/cars_real.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/cars_real.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./pictures/pingpang.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/pingpang.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+  <p style="font-size: 20px" align="center">
+    <b> 
+      Implementation of Complex Motions like Orbiting
+    </b>
+  </p>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Start Image & <br>User Input</th>
+        <th style="font-size: 16px">Generation Results</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br>User Input</th>
+        <th style="font-size: 16px">Generation Results</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br>User Input</th>
+        <th style="font-size: 16px">Generation Results</th>
+      </tr>
+
+      <tr>
+        <th><img src="./pictures/girl.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/girl.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./pictures/sword.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/sword.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./pictures/ghost.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/ghost.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+
+  <p>&nbsp;</p>
+  <hr>
+
+  <h2 id="comparison_with_baseline_container" align="left"><a name="image-results" id="image-results"></a>Comparisons</h2>
+
+  <p style="font-size: 20px" align="center">
+    <b> 
+    Controlled Occlusion Generation with The Same User-Interative Trajectory
+    </b>
+  </p>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Start Image & User Input <br> (Ours)</th>
+        <th style="font-size: 16px">Generation Results <br> (Ours)</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & User Input <br> (DragAnything)</th>
+        <th style="font-size: 16px">Generation Results <br> (DragAnything)</th>
+      </tr>
+
+      <tr>
+        <th><img src="./pictures/storm_near.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/storm_near.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./Draganything/storm.png" alt="" width="170"></th>
+        <th><img src="./Draganything/storm.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr>
+        <th style="font-size: 16px">Start Image & User Input <br> (Ours)</th>
+        <th style="font-size: 16px">Generation Results <br> (Ours)</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & User Input <br> (DragNUWA)</th>
+        <th style="font-size: 16px">Generation Results <br> (DragNUWA)</th>
+      </tr>
+
+      <tr>
+        <th><img src="./pictures/storm_far.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/storm_far.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./DragNUWA/storm.png" alt="" width="170"></th>
+        <th><img src="./DragNUWA/storm.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Start Image & User Input <br> (Ours)</th>
+        <th style="font-size: 16px">Generation Results <br> (Ours)</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & User Input <br> (DragAnything)</th>
+        <th style="font-size: 16px">Generation Results <br> (DragAnything)</th>
+      </tr>
+
+      <tr>
+        <th><img src="./pictures/two_cars.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/two_cars.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./Draganything/two_cars.png" alt="" width="170"></th>
+        <th><img src="./Draganything/two_cars.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr>
+        <th style="font-size: 16px">Start Image & User Input <br> (Ours)</th>
+        <th style="font-size: 16px">Generation Results <br> (Ours)</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & User Input <br> (DragNUWA)</th>
+        <th style="font-size: 16px">Generation Results <br> (DragNUWA)</th>
+      </tr>
+
+      <tr>
+        <th><img src="./pictures/two_cars1.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/two_cars_1.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./DragNUWA/two_cars.png" alt="" width="170"></th>
+        <th><img src="./DragNUWA/two_cars.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+  <p style="font-size: 20px" align="center">
+    <b> 
+      Better Control for Forward and Backward Object Movements in relation to the Lens
+    </b>
+  </p>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Start Image & <br> User Input <br> (Ours)</th>
+        <th style="font-size: 16px">Generation Results <br> (Ours)</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br> User Input <br> (DragAnything)</th>
+        <th style="font-size: 16px">Generation Results <br> (DragAnything)</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br> User Input <br> (DragNUWA)</th>
+        <th style="font-size: 16px">Generation Results <br> (DragNUWA)</th>
+      </tr>
+
+      <tr>
+        <th><img src="./pictures/two_planets.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/two_planets.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./DragAnything/two_planets.png" alt="" width="170"></th>
+        <th><img src="./Draganything/two_planets.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./DragNUWA/two_planets.png" alt="" width="170"></th>
+        <th><img src="./DragNUWA/two_planets.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Start Image & <br> User Input <br> (Ours)</th>
+        <th style="font-size: 16px">Generation Results <br> (Ours)</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br> User Input <br> (DragAnything)</th>
+        <th style="font-size: 16px">Generation Results <br> (DragAnything)</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br> User Input <br> (DragNUWA)</th>
+        <th style="font-size: 16px">Generation Results <br> (DragNUWA)</th>
+      </tr>
+
+      <tr>
+        <th><img src="./pictures/cars_real.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/cars_real.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./DragAnything/cars_real.png" alt="" width="170"></th>
+        <th><img src="./Draganything/cars_real.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./DragNUWA/cars_real.png" alt="" width="170"></th>
+        <th><img src="./DragNUWA/cars_real.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+  <p style="font-size: 20px" align="center">
+    <b> 
+      Implementation of Complex Motions like Orbiting
+    </b>
+  </p>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Start Image & <br> User Input <br> (Ours)</th>
+        <th style="font-size: 16px">Generation Results <br> (Ours)</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br> User Input <br> (DragAnything)</th>
+        <th style="font-size: 16px">Generation Results <br> (DragAnything)</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br> User Input <br> (DragNUWA)</th>
+        <th style="font-size: 16px">Generation Results <br> (DragNUWA)</th>
+      </tr>
+
+      <tr>
+        <th><img src="./pictures/bowl.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/bowl.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./DragAnything/bowl.png" alt="" width="170"></th>
+        <th><img src="./Draganything/bowl.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./DragNUWA/bowl.png" alt="" width="170"></th>
+        <th><img src="./DragNUWA/bowl.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Start Image & <br> User Input <br> (Ours)</th>
+        <th style="font-size: 16px">Generation Results <br> (Ours)</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br> User Input <br> (DragAnything)</th>
+        <th style="font-size: 16px">Generation Results <br> (DragAnything)</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br> User Input <br> (DragNUWA)</th>
+        <th style="font-size: 16px">Generation Results <br> (DragNUWA)</th>
+      </tr>
+
+      <tr>
+        <th><img src="./pictures/girl.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/girl.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./DragAnything/girl.png" alt="" width="170"></th>
+        <th><img src="./Draganything/girl.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./DragNUWA/girl.png" alt="" width="170"></th>
+        <th><img src="./DragNUWA/girl.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+  <p>&nbsp;</p>
+  <hr>
+
+  <h2 id="ablations" align="left"><a name="image-results" id="image-results"></a>Ablations</h2>
+
+  <p style="font-size: 20px" align="center">
+    <b> 
+      Ablation on Depth and Instance Information
+    </b>
+  </p>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Start Image & User Input</th>
+        <th style="font-size: 16px">Generation Results <br> (Ours)</th>
+        <th style="font-size: 16px">Generation Results <br> (w/o Instance)</th>
+        <th style="font-size: 16px">Generation Results <br> (w/o Depth)</th>
+      </tr>
+
+      <tr>
+        <th><img src="./pictures/sword.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/sword.gif" alt="GIF Animation" width="170"></th>
+        <th><img src="./Ablation/sword_noid.gif" alt="GIF Animation" width="170"></th>
+        <th><img src="./Ablation/sword_nodepth.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+  <p style="font-size: 20px" align="center">
+    <b> 
+      Ablation on the Number of Inference Control Points
+    </b>
+  </p>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Start Image & <br>User Input</th>
+        <th style="font-size: 16px">Generation Results with Default Points</th>
+        <th style="font-size: 16px">Generation Results with Dense Points</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br> User Input</th>
+        <th style="font-size: 16px">Generation Results with Default Points</th>
+        <th style="font-size: 16px">Generation Results with Dense Points</th>
+      </tr>
+
+      <tr>
+        <th><img src="./Ablation/dog.png" alt="" width="170"></th>
+        <th><img src="./Ablation/dog_default_points.gif" alt="GIF Animation" width="170"></th>
+        <th><img src="./Ablation/dog_dense_points.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./Ablation/wave.png" alt="" width="170"></th>
+        <th><img src="./Ablation/wave_default_points.gif" alt="GIF Animation" width="170"></th>
+        <th><img src="./Ablation/wave_dense_points.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th style="font-size: 16px">Start Image & <br> User Input</th>
+        <th style="font-size: 16px">Generation Results <br> with Default Points</th>
+        <th style="font-size: 16px">Generation Results <br> with Dense Points</th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+      </tr>
+
+      <tr>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><img src="./Ablation/passenger.png" alt="" width="170"></th>
+        <th><img src="./Ablation/passenger_default_points.gif" alt="GIF Animation" width="170"></th>
+        <th><img src="./Ablation/passenger_dense_points.gif" alt="GIF Animation" width="170"></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+      </tr>
+
+      <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+  <p style="font-size: 20px" align="center">
+    <b> 
+      Comparison with Single-Point Controlled Video Synthesis
+    </b>
+  </p>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Start Image & <br>User Input</th>
+        <th style="font-size: 16px">Generation Results with Default Points</th>
+        <th style="font-size: 16px">Generation Results with Single-Point</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="font-size: 16px">Start Image & <br> User Input</th>
+        <th style="font-size: 16px">Generation Results with Default Points</th>
+        <th style="font-size: 16px">Generation Results with Single-Point</th>
+      </tr>
+
+      <tr>
+        <th><img src="./Ablation/purple_moon.png" alt="" width="170"></th>
+        <th><img src="./Ablation/purple_moon.gif" alt="GIF Animation" width="170"></th>
+        <th><img src="./Ablation/purple_moon_single.gif" alt="GIF Animation" width="170"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><img src="./pictures/two_cars.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/two_cars.gif" alt="GIF Animation" width="170"></th>
+        <th><img src="./Ablation/two_cars_single.gif" alt="GIF Animation" width="170"></th>
+      </tr>
+
+      <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th style="font-size: 16px">Start Image & <br> User Input</th>
+        <th style="font-size: 16px">Generation Results <br> with Default Points</th>
+        <th style="font-size: 16px">Generation Results <br> with Single-Point</th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+      </tr>
+
+      <tr>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><img src="./pictures/two_planets.png" alt="" width="170"></th>
+        <th><img src="./LeviTor/two_planets.gif" alt="GIF Animation" width="170"></th>
+        <th><img src="./Ablation/two_planets_single.gif" alt="GIF Animation" width="170"></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+        <th><th style="font-size: 16px">                                                            </th></th>
+      </tr>
+
+      <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+</div>
